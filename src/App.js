@@ -11,12 +11,13 @@ function App() {
 
   function Chungus() {
     return (
-      <Stack>
+      <>
         {Array(count)
           .fill()
           .map((e) => {
             return (
               <Frame
+                center
                 width="200px"
                 height="200px"
                 animate={{ rotate: 360 }}
@@ -33,7 +34,7 @@ function App() {
               </Frame>
             );
           })}
-      </Stack>
+      </>
     );
   }
   return <Chungus />;
