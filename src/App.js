@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Frame, Scroll, useCycle } from "framer";
 import "./index.css";
+import { v4 } from "uuid";
 
 function App() {
   const [count, setCount] = useState(1);
@@ -16,15 +17,20 @@ function App() {
         animate={{ rotate: 360 }}
         transition={{ duration: 1 }}
       >
-        {Array(count).fill(
-          <img
-            style={{ display: "block" }}
-            onClick={handleOnClick}
-            width="200px"
-            height="200px"
-            src="chungus.jpg"
-          />
-        )}
+        {Array(count)
+          .fill()
+          .map((e) => {
+            return (
+              <img
+                key={v4()}
+                style={{ display: "block" }}
+                onClick={handleOnClick}
+                width="200px"
+                height="200px"
+                src="chungus.jpg"
+              />
+            );
+          })}
       </Frame>
     );
   }
