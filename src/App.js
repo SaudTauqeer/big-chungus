@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Frame, Scroll, useCycle } from "framer";
+import { Frame, Scroll, useCycle, Stack } from "framer";
 import "./index.css";
 import { v4 } from "uuid";
 
@@ -11,27 +11,29 @@ function App() {
 
   function Chungus() {
     return (
-      <Frame
-        width="200px"
-        height="200px"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 1 }}
-      >
+      <Stack>
         {Array(count)
           .fill()
           .map((e) => {
             return (
-              <img
-                key={v4()}
-                style={{ display: "block" }}
-                onClick={handleOnClick}
+              <Frame
                 width="200px"
                 height="200px"
-                src="chungus.jpg"
-              />
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1 }}
+              >
+                <img
+                  key={v4()}
+                  style={{ display: "block" }}
+                  onClick={handleOnClick}
+                  width="200px"
+                  height="200px"
+                  src="chungus.jpg"
+                />
+              </Frame>
             );
           })}
-      </Frame>
+      </Stack>
     );
   }
   return <Chungus />;
