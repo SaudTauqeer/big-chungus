@@ -5,7 +5,8 @@ import "./index.css";
 function App() {
   useEffect(() => {
     window.addEventListener("click", () => {
-      setCount(count + 1);
+      console.log("called");
+      setCount((prev) => setCount(prev + 1));
     });
     return () => window.removeEventListener("click");
   }, []);
