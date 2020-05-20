@@ -1,41 +1,37 @@
-import React, { useState } from "react";
-import { Frame, Scroll, useCycle, Stack } from "framer";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import "./index.css";
-import { v4 } from "uuid";
 
 function App() {
+  useEffect(() => {
+    window.addEventListener("click", () => {
+      setCount((prev) => setCount(prev + 1));
+    });
+    return () => window.removeEventListener("click");
+  }, []);
+
   const [count, setCount] = useState(1);
-  function handleOnClick() {
-    setCount((prev) => setCount(prev + 1));
-  }
 
   function Chungus() {
     return (
       <>
         {Array(count)
           .fill()
-          .map((e) => {
+          .map((e, i) => {
             return (
-              <Frame
-                center
-                width="200px"
-                height="200px"
-                animate={{ x: "1000px", y: "100px" }}
+              <motion.img
                 transition={{
                   duration: 2,
                   loop: Infinity,
                   ease: "linear",
                 }}
-              >
-                <img
-                  key={v4()}
-                  style={{ display: "block" }}
-                  onClick={handleOnClick}
-                  width="200px"
-                  height="200px"
-                  src="chungus.jpg"
-                />
-              </Frame>
+                animate={{ x: "1000px", y: "1000px" }}
+                key={i}
+                style={{ display: "block" }}
+                width="200px"
+                height="200px"
+                src="chungus.jpg"
+              />
             );
           })}
       </>
