@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import Chungus from "./Components/Chungus";
 import "./index.css";
 
+const noTrackClasses = ["no-event"];
+const events = ["click", "resize"];
+
 function App() {
-  const noTrackClasses = ["no-event"];
+  const [vw, setVw] = useState(document.documentElement.clientWidth);
+  const [vh, setVh] = useState(document.documentElement.clientHeight);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -26,7 +30,7 @@ function App() {
 
   return (
     <>
-      <Chungus count={count} />
+      <Chungus vh={vh} vw={vw} count={count} />
       <div style={{ position: "absolute", bottom: 0, zIndex: "999999" }}>
         <p
           className="no-event"

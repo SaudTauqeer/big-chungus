@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-function Chungus({ count }) {
+function Chungus({ count, vw, vh }) {
   console.log("chungus");
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
@@ -18,9 +18,8 @@ function Chungus({ count }) {
               }}
               drag
               animate={{
-                x: window.innerHeight,
-                y: 1920,
-                z: Math.random(22, 3),
+                x: vw - 200,
+                y: vh - 200,
               }}
               key={i}
               style={{ display: "block" }}
