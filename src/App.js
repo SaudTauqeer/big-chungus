@@ -21,7 +21,7 @@ function App() {
                 width="200px"
                 height="200px"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 2, loop: Infinity, ease: "linear" }}
               >
                 <img
                   key={v4()}
