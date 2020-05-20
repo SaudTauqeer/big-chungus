@@ -4,13 +4,18 @@ import Chungus from "./Components/Chungus";
 import "./index.css";
 
 function App() {
+  const noTrackClasses = ["no-event"];
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       console.log(window.innerWidth);
     });
 
     window.addEventListener("click", (e) => {
-      if (e.target.id !== "dont-track-click") {
+      const currentElClass = e.target.className;
+      const currentElId = e.target.id;
+
+      if (!noTrackClasses.includes(currentElClass)) {
         setCount((prev) => setCount(prev + 1));
       }
     });
@@ -22,8 +27,18 @@ function App() {
   return (
     <>
       <Chungus count={count} />
-      <div style={{ position: "absolute", bottom: 0 }}>
-        <p>test</p>
+      <div style={{ position: "absolute", bottom: 0, zIndex: "999999" }}>
+        <p
+          className="no-event"
+          style={{
+            cursor: "pointer",
+            fontWeight: "bold",
+            letterSpacing: "3px",
+            paddingLeft: "1rem",
+          }}
+        >
+          Settings
+        </p>
       </div>
     </>
   );
