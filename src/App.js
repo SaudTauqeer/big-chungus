@@ -10,20 +10,35 @@ function App() {
   const [vw, setVw] = useState(document.documentElement.clientWidth);
   const [vh, setVh] = useState(document.documentElement.clientHeight);
 
+  function clickHandler(e) {
+    const currentElClass = e.target.className;
+
+    if (!noTrackClasses.includes(currentElClass)) {
+      setCount((prev) => setCount(prev + 1));
+    }
+  }
+
+  function resizeHandler() {
+    setVw(document.documentElement.clientWidth);
+    setVh(document.documentElement.clientHeight);
+  }
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      console.log(window.innerWidth);
-    });
-
-    window.addEventListener("click", (e) => {
-      const currentElClass = e.target.className;
-      const currentElId = e.target.id;
-
-      if (!noTrackClasses.includes(currentElClass)) {
-        setCount((prev) => setCount(prev + 1));
+    events.forEach((event) => {
+      switch (event) {
+        case "click":
+          window.addEventListener(event, clickHandler);
+          break;
+        case "resize":
+          window.addEventListener(event, resizeHandler);
+          break;
+        default:
+          break;
       }
     });
-    return () => window.removeEventListener("click");
+
+    return () => {
+      events.forEach((event) => window.removeEventListener(event));
+    };
   }, []);
 
   const [count, setCount] = useState(1);
