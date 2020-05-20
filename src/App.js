@@ -20,8 +20,12 @@ function App() {
                 center
                 width="200px"
                 height="200px"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, loop: Infinity, ease: "linear" }}
+                animate={{ x: "1000px", y: "100px" }}
+                transition={{
+                  duration: 2,
+                  loop: Infinity,
+                  ease: "linear",
+                }}
               >
                 <img
                   key={v4()}
