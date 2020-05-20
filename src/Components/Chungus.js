@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
+//util
+import { getRandomInt } from "../util/index";
 
 function Chungus({ count, vw, vh }) {
   console.log("chungus");
@@ -10,16 +12,16 @@ function Chungus({ count, vw, vh }) {
         .map((e, i) => {
           return (
             <motion.img
-              id="chungus"
+              className="no-event"
               transition={{
-                duration: 10,
+                duration: 4,
                 loop: Infinity,
                 ease: "linear",
               }}
               drag
               animate={{
-                x: vw - 200,
-                y: vh - 200,
+                x: getRandomInt(0, vw),
+                y: getRandomInt(0, vh),
               }}
               key={i}
               style={{ display: "block" }}
