@@ -4,18 +4,24 @@ import React from "react";
 function Chungus({ count }) {
   console.log("chungus");
   return (
-    <>
+    <div style={{ display: "flex", flexWrap: "wrap" }}>
       {Array(count)
         .fill()
         .map((e, i) => {
           return (
             <motion.img
+              id="chungus"
               transition={{
-                duration: 2,
+                duration: 10,
                 loop: Infinity,
                 ease: "linear",
               }}
-              animate={{ x: "1000px", y: "1000px" }}
+              drag
+              animate={{
+                x: window.innerHeight,
+                y: 1920,
+                z: Math.random(22, 3),
+              }}
               key={i}
               style={{ display: "block" }}
               width="200px"
@@ -24,8 +30,8 @@ function Chungus({ count }) {
             />
           );
         })}
-    </>
+    </div>
   );
 }
 
-export default Chungus;
+export default React.memo(Chungus);
