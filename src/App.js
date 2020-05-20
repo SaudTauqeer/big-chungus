@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import LazyLoad from "react-lazyload";
 import Chungus from "./Components/Chungus";
 import "./index.css";
 
